@@ -2,6 +2,7 @@
 #define __CTRL_H__
 
 #include <stdint.h>
+#include "pid.h"
 
 // ==========================================
 // 📺 暴露给 main.c 用于 OLED 刷新的全局变量
@@ -14,6 +15,10 @@ extern uint16_t corner_count;
 // 新增：系统综合模式状态变量
 extern uint8_t  sys_mode;      // 0: NORM (常规模式), 1: COMP (综合模式)
 extern uint8_t  track_enable;  // 1: 允许底盘循迹移动, 0: 底盘锁死(仅云台打靶)
+
+// 暴露电机 PID 结构体以供 OLED 刷新目标设定速度
+extern PID_TypeDef pid_left;
+extern PID_TypeDef pid_right;
 
 // ==========================================
 // 🚀 核心控制接口函数
